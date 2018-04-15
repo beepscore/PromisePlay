@@ -32,10 +32,10 @@ class ImageManager {
         return URLSession.shared.dataTask(.promise, with: request)
 
             .compactMap { arg -> UIImage in
-                // closure tuple arg has .data and .response
+                // closure tuple arg has Data .data and URLResponse .response
                 
                 // response don't care
-                let _ = arg.response as URLResponse
+                let _ = arg.response
 
                 guard let image = UIImage(data: arg.data) else { throw ImageManagerError.dataInvalid }
                 return image

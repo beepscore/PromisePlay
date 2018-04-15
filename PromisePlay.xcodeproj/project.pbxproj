@@ -144,12 +144,12 @@
 			isa = PBXGroup;
 			children = (
 				DEFF97532083008E00F52CB2 /* AppDelegate.swift */,
-				DEFF97552083008E00F52CB2 /* ViewController.swift */,
-				DEFF97572083008E00F52CB2 /* Main.storyboard */,
 				DEFF975A2083008F00F52CB2 /* Assets.xcassets */,
-				DEFF975C2083008F00F52CB2 /* LaunchScreen.storyboard */,
-				DEFF975F2083008F00F52CB2 /* Info.plist */,
 				DE2CBA422083142D004C76BB /* ImageManager.swift */,
+				DEFF975F2083008F00F52CB2 /* Info.plist */,
+				DEFF975C2083008F00F52CB2 /* LaunchScreen.storyboard */,
+				DEFF97572083008E00F52CB2 /* Main.storyboard */,
+				DEFF97552083008E00F52CB2 /* ViewController.swift */,
 			);
 			path = PromisePlay;
 			sourceTree = "<group>";

@@ -32,14 +32,10 @@ class ViewController: UIViewController {
         do {
             try ImageManager.getImage2(urlString: urlString)
                 .done { image in
-                    //if error != nil {
-                    //    print(String(describing: error))
-                    //    return
-                    //}
                     self.imageView.image = image
                 }
-                .catch {_ in
-                    print("error")
+                .catch {error in
+                    print(error.localizedDescription)
             }
         } catch {
             print(error.localizedDescription)

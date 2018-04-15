@@ -26,8 +26,11 @@ class ImageManager {
             // dataTask's completionHandler now has values for data, response, error
 
             if error != nil {
-                completion(nil, error)
-                return
+                DispatchQueue.main.async {
+                    // execute the getImage completion argument within dataTask's completion block.
+                    // on main queue, so completion may safely use image to update UI
+                    completion(nil, error)
+                }
             }
 
             guard let data = data,

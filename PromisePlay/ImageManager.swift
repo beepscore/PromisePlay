@@ -17,7 +17,6 @@ class ImageManager {
     }
 
     static func configurePromiseKit() {
-        // TODO: consider use background queue and main queue to update UI.
         // All PromiseKit handlers take an on parameter allowing you to choose the queue the handler executes upon.
         // The default is always the main queue.
         // We suggest only changing the queue for the map suite of functions,
@@ -27,6 +26,7 @@ class ImageManager {
         // Defining the Default DispatchQueue
         // http://promisekit.org/news/2018/02/PromiseKit-6.0-Released/
         PromiseKit.conf.Q.map = .global()
+        // iOS must use main queue to update UI
         PromiseKit.conf.Q.return = .main  // FYI this is the default
     }
 

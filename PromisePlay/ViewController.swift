@@ -29,16 +29,20 @@ class ViewController: UIViewController {
 //        }
 
         // getImage with Promise
-        try! ImageManager.getImage2(urlString: urlString)
-            .done { image in
-                //if error != nil {
-                //    print(String(describing: error))
-                //    return
-                //}
-                self.imageView.image = image
+        do {
+            try ImageManager.getImage2(urlString: urlString)
+                .done { image in
+                    //if error != nil {
+                    //    print(String(describing: error))
+                    //    return
+                    //}
+                    self.imageView.image = image
+                }
+                .catch {_ in
+                    print("error")
             }
-            .catch {_ in
-                print("error")
+        } catch {
+            print(error.localizedDescription)
         }
 
     }

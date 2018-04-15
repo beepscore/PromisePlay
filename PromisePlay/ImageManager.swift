@@ -13,6 +13,7 @@ class ImageManager {
 
     enum ImageManagerError: Error {
         case urlInvalid
+        case dataInvalid
     }
 
     /// Ray Wenderlich WeatherHelper.swift getWeatherTheOldFashionedWay
@@ -32,9 +33,12 @@ class ImageManager {
 
             .compactMap { arg -> UIImage in
                 // closure tuple arg has .data and .response
-                let image = UIImage(data: arg.data)
+                
+                // response don't care
                 let _ = arg.response as URLResponse
-                return image!
+
+                guard let image = UIImage(data: arg.data) else { throw ImageManagerError.dataInvalid }
+                return image
         }
     }
 

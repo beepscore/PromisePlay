@@ -33,6 +33,15 @@ class ImageManager {
         // SSL_ERROR_ZERO_RETURN(6): operation failed because the connection was cleanly shut down with a close_notify alert
         // 2018-04-15 10:52:54.334279-0700 PromisePlay[39551:663001] TIC Read Status [1:0x0]: 1:57
         // https://stackoverflow.com/questions/47802071/xcode-9-ios-11-boringssl-ssl-error-zero-return
+
+        // TODO: consider use background queue and main queue to update UI.
+        // All PromiseKit handlers take an on parameter allowing you to choose the queue the handler executes upon.
+        // The default is always the main queue.
+        // We suggest only changing the queue for the map suite of functions,
+        // thus done and catch will continue to run on the main queue which is usually what you want.
+        // https://github.com/mxcl/PromiseKit/blob/master/Documentation/CommonPatterns.md
+        // Defining the Default DispatchQueue
+        // http://promisekit.org/news/2018/02/PromiseKit-6.0-Released/
         return URLSession.shared.dataTask(.promise, with: request)
 
             .compactMap { arg -> UIImage in

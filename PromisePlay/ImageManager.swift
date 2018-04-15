@@ -15,7 +15,7 @@ class ImageManager {
     /// - Parameters:
     ///   - urlString: url of image to download
     ///   - completion: will be run after download task finishes
-    func getImage(urlString: String, completion: @escaping (UIImage?, Error?) -> ()) {
+    static func getImage(urlString: String, completion: @escaping (UIImage?, Error?) -> ()) {
 
         guard let url = URL(string: urlString) else { return }
         let request = URLRequest(url: url)

@@ -6,12 +6,13 @@ Experiment with iOS Swift PromiseKit.
 ## Swift
 
 ### PromiseKit
+Version 6 has breaking changes
 https://github.com/mxcl/PromiseKit
-version 6 has breaking changes
 
 ### Getting Started with PromiseKit
+Written for PromiseKit version 4.
+This tutorial uses OpenWeatherMap, free access allows only low frequency requests ~ 1 request / 10 minutes.
 https://www.raywenderlich.com/145683/getting-started-promises-promisekit
-Note this tutorial uses OpenWeatherMap, free access allows only low frequency requests.
 
 ### Introduction to Promises in Swift (/dev/world/2017)
 https://www.youtube.com/watch?v=nU4BZ9vtmTc

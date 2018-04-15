@@ -10,6 +10,7 @@
 		0BE7B0D32B173EE28DD115FD /* Pods_PromisePlayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EA1BCED44EC2E87A5E38AFB /* Pods_PromisePlayUITests.framework */; };
 		272751062D652B41838CEB4D /* Pods_PromisePlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF85343F5FBF6E70594A3197 /* Pods_PromisePlay.framework */; };
 		AF4E7D193D29A01118E7EC69 /* Pods_PromisePlayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BB4367CF7079B6D24549B9A /* Pods_PromisePlayTests.framework */; };
+		DE2CBA432083142D004C76BB /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2CBA422083142D004C76BB /* ImageManager.swift */; };
 		DEFF97542083008E00F52CB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFF97532083008E00F52CB2 /* AppDelegate.swift */; };
 		DEFF97562083008E00F52CB2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFF97552083008E00F52CB2 /* ViewController.swift */; };
 		DEFF97592083008E00F52CB2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEFF97572083008E00F52CB2 /* Main.storyboard */; };
@@ -47,6 +48,7 @@
 		BD43691F45F34118BED1E994 /* Pods-PromisePlay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PromisePlay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PromisePlay/Pods-PromisePlay.debug.xcconfig"; sourceTree = "<group>"; };
 		DE2C6D1620830E60004E9895 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		DE2C6D1720830E6C004E9895 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		DE2CBA422083142D004C76BB /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		DEFF97502083008E00F52CB2 /* PromisePlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PromisePlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEFF97532083008E00F52CB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEFF97552083008E00F52CB2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				DEFF975A2083008F00F52CB2 /* Assets.xcassets */,
 				DEFF975C2083008F00F52CB2 /* LaunchScreen.storyboard */,
 				DEFF975F2083008F00F52CB2 /* Info.plist */,
+				DE2CBA422083142D004C76BB /* ImageManager.swift */,
 			);
 			path = PromisePlay;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE2CBA432083142D004C76BB /* ImageManager.swift in Sources */,
 				DEFF97562083008E00F52CB2 /* ViewController.swift in Sources */,
 				DEFF97542083008E00F52CB2 /* AppDelegate.swift in Sources */,
 			);
@@ -557,7 +561,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J2LXK9FK3W;
 				INFOPLIST_FILE = PromisePlay/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.beepscore.PromisePlay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -573,7 +580,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J2LXK9FK3W;
 				INFOPLIST_FILE = PromisePlay/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.beepscore.PromisePlay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -590,7 +600,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J2LXK9FK3W;
 				INFOPLIST_FILE = PromisePlayTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.beepscore.PromisePlayTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -608,7 +622,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J2LXK9FK3W;
 				INFOPLIST_FILE = PromisePlayTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.beepscore.PromisePlayTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -625,7 +643,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J2LXK9FK3W;
 				INFOPLIST_FILE = PromisePlayUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.beepscore.PromisePlayUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -642,7 +664,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J2LXK9FK3W;
 				INFOPLIST_FILE = PromisePlayUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.beepscore.PromisePlayUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

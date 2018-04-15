@@ -31,7 +31,9 @@ class ImageManager {
 
             guard let data = data,
                 let image = UIImage(data: data) else {
-                    completion(nil, error)
+                    DispatchQueue.main.async {
+                        completion(nil, error)
+                    }
                     return
             }
             DispatchQueue.main.async {

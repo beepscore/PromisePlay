@@ -34,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DE2C6D1620830E60004E9895 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		DE2C6D1720830E6C004E9895 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DEFF97502083008E00F52CB2 /* PromisePlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PromisePlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEFF97532083008E00F52CB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEFF97552083008E00F52CB2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +79,8 @@
 		DEFF97472083008E00F52CB2 = {
 			isa = PBXGroup;
 			children = (
+				DE2C6D1720830E6C004E9895 /* README.md */,
+				DE2C6D1620830E60004E9895 /* LICENSE */,
 				DEFF97522083008E00F52CB2 /* PromisePlay */,
 				DEFF97672083008F00F52CB2 /* PromisePlayTests */,
 				DEFF97722083008F00F52CB2 /* PromisePlayUITests */,

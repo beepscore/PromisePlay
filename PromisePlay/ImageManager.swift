@@ -21,8 +21,9 @@ class ImageManager {
         let request = URLRequest(url: url)
         let session = URLSession.shared
 
-        // completionHandler has 3 arguments data, response, error
         let dataTask = session.dataTask(with: request) { data, response, error in
+
+            // dataTask's completionHandler now has values for data, response, error
 
             if error != nil {
                 completion(nil, error)
@@ -32,11 +33,14 @@ class ImageManager {
             guard let data = data,
                 let image = UIImage(data: data) else {
                     DispatchQueue.main.async {
+                        // execute the getImage completion argument within dataTask's completion block.
+                        // on main queue, so completion may safely use image to update UI
                         completion(nil, error)
                     }
                     return
             }
             DispatchQueue.main.async {
+                // execute the getImage completion argument within dataTask's completion block.
                 // on main queue, so completion may safely use image to update UI
                 completion(image, nil)
             }

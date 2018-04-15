@@ -26,6 +26,13 @@ class ImageManager {
 
         let request = URLRequest(url: url)
 
+        // Tested In simulator. Didn't test on device yet.
+        // when app starts it makes 1 request.
+        // If I leave app running, after several minutes get
+        // [BoringSSL] Function boringssl_session_errorlog: line 2881 [boringssl_session_read]
+        // SSL_ERROR_ZERO_RETURN(6): operation failed because the connection was cleanly shut down with a close_notify alert
+        // 2018-04-15 10:52:54.334279-0700 PromisePlay[39551:663001] TIC Read Status [1:0x0]: 1:57
+        // https://stackoverflow.com/questions/47802071/xcode-9-ios-11-boringssl-ssl-error-zero-return
         return URLSession.shared.dataTask(.promise, with: request)
 
             .compactMap { arg -> UIImage in

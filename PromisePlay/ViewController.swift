@@ -14,14 +14,23 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        // use https, doesn't require app transport security exception
+        let urlString = "https://upload.wikimedia.org/wikipedia/commons/6/69/Dog_morphological_variation.png"
+
+        ImageManager.getImage(urlString: urlString) { image, error in
+            if error != nil {
+                print(String(describing: error))
+                return
+            }
+            self.imageView.image = image
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 
 }
 

@@ -7,11 +7,65 @@
 //
 
 import UIKit
+import PromiseKit
 
 class ImageManager {
 
+
+
+    enum ImageManagerError: Error {
+        case urlInvalid
+    }
+
     /// Ray Wenderlich WeatherHelper.swift getWeatherTheOldFashionedWay
     /// https://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift
+
+    /// method with Promise
+    /// - Parameters:
+    ///   - urlString: url of image to download
+    /// - Returns: a Promise, not Guarantee because method can throw an error
+    static func getImage2(urlString: String) throws -> Promise<UIImage> {
+
+
+        guard let url = URL(string: urlString) else { throw ImageManagerError.urlInvalid }
+
+        let request = URLRequest(url: url)
+        // returns promise for a tuple Promise<(data: Data, response: URLResponse)>
+//        var promise: Promise<(data: Data, response: URLResponse)> = URLSession.shared.dataTask(.promise, with: request)
+//            .then { (arg) in
+//                // closure tuple has .data and .response
+//
+//                let (data, response) = arg
+//                let image = UIImage(data: data)
+//                let _ = response
+//                return Promise { image as UIImage }
+//        }
+
+        // typealias promType = (Data, URLResponse)
+        // typealias promType = (Data, URLResponse)
+        // typealias promType = Promise<(data: Data, response: URLResponse)>
+        typealias promType = Promise<(Data, URLResponse)>
+        typealias promTuple = (Data, URLResponse)
+        //var promise: promType = URLSession.shared.dataTask(.promise, with: request)
+        return URLSession.shared.dataTask(.promise, with: request)
+
+//            .compactMap { (arg) in
+//            .compactMap { arg -> Promise<UIImage> in
+            .compactMap { arg -> UIImage in
+                // closure tuple has .data and .response
+
+
+                //let (data, response) = arg
+                let image = UIImage(data: arg.data)
+                let _ = arg.response as URLResponse
+                //return Promise { _ in  return image }
+                //UIImage(data: arg.data)
+                return image!
+        }
+
+    }
+
+    /// method with completion
     /// - Parameters:
     ///   - urlString: url of image to download
     ///   - completion: will be run after download task finishes

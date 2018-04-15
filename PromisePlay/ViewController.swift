@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PromiseKit
 
 class ViewController: UIViewController {
 
@@ -18,13 +19,28 @@ class ViewController: UIViewController {
         // use https, doesn't require app transport security exception
         let urlString = "https://upload.wikimedia.org/wikipedia/commons/6/69/Dog_morphological_variation.png"
 
-        ImageManager.getImage(urlString: urlString) { image, error in
-            if error != nil {
-                print(String(describing: error))
-                return
+        // getImage with completion, not using Promise
+//        ImageManager.getImage(urlString: urlString) { image, error in
+//            if error != nil {
+//                print(String(describing: error))
+//                return
+//            }
+//            self.imageView.image = image
+//        }
+
+        // getImage with Promise
+        try! ImageManager.getImage2(urlString: urlString)
+            .done { image in
+                //if error != nil {
+                //    print(String(describing: error))
+                //    return
+                //}
+                self.imageView.image = image
             }
-            self.imageView.image = image
+            .catch {_ in
+                print("error")
         }
+
     }
 
     override func didReceiveMemoryWarning() {

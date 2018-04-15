@@ -20,25 +20,27 @@ class ViewController: UIViewController {
         let urlString = "https://upload.wikimedia.org/wikipedia/commons/6/69/Dog_morphological_variation.png"
 
         // getImage with completion, not using Promise
-//        ImageManager.getImage(urlString: urlString) { image, error in
-//            if error != nil {
-//                print(String(describing: error))
-//                return
-//            }
-//            self.imageView.image = image
-//        }
+        // ImageManager.getImage(urlString: urlString) { image, error in
+        //     if error != nil {
+        //         print(String(describing: error))
+        //         return
+        //    }
+        //     self.imageView.image = image
+        // }
 
-        // getImage with Promise
+        // getImage2 with Promise
         do {
             try ImageManager.getImage2(urlString: urlString)
                 .done { image in
                     self.imageView.image = image
                 }
                 .catch { error in
-                    print(error.localizedDescription)
+                    // catches ImageManagerError dataInvalid, thrown after dataTask
+                    print(error)
             }
         } catch {
-            print(error.localizedDescription)
+            // catches error ImageManagerError urlInvalid, thrown before dataTask starts
+            print(error)
         }
 
     }

@@ -1,0 +1,6 @@
+framework module Pods_PromisePlay {
+  umbrella header "Pods-PromisePlay-umbrella.h"
+
+  export *
+  module * { export * }
+}

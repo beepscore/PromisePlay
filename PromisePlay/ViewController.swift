@@ -34,7 +34,7 @@ class ViewController: UIViewController {
                 .done { image in
                     self.imageView.image = image
                 }
-                .catch {error in
+                .catch { error in
                     print(error.localizedDescription)
             }
         } catch {

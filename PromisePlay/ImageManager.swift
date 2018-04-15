@@ -16,9 +16,6 @@ class ImageManager {
         case dataInvalid
     }
 
-    /// Ray Wenderlich WeatherHelper.swift getWeatherTheOldFashionedWay
-    /// https://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift
-
     /// method with Promise
     /// - Parameters:
     ///   - urlString: url of image to download
@@ -42,7 +39,10 @@ class ImageManager {
         }
     }
 
-    /// method with completion
+    /// method with completion, doesn't use Promise
+    /// references
+    /// Ray Wenderlich WeatherHelper.swift getWeatherTheOldFashionedWay
+    /// https://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift
     /// - Parameters:
     ///   - urlString: url of image to download
     ///   - completion: will be run after download task finishes

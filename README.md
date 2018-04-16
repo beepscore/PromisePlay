@@ -1,5 +1,5 @@
 # Purpose
-Experiment with iOS Swift PromiseKit.
+Experiment with iOS Swift PromiseKit version >= 6.
 
 # References
 

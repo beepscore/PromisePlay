@@ -43,6 +43,20 @@ class ViewController: UIViewController {
             print(error)
         }
 
+        // call method from a tutorial
+        // http://drekka.ghost.io/doing-it-asynchronously-rxswift-vs-promisekit/
+        foo()
+            // .then(execute: bar)
+            .then {fooResult in
+                self.bar(fooResult)
+            }
+            .done { barResult in
+                print("Success \(barResult)")
+            }
+            .catch { error in
+                print("Error \(error)")
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,5 +64,13 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func foo() -> Promise<String> {
+        // .value initializes a new fulfilled promise
+        return .value("abc")
+    }
+
+    func bar(_ arg: String) -> Promise<String> {
+        return .value("\(arg)def")
+    }
 }
 

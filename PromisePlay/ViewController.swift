@@ -46,8 +46,9 @@ class ViewController: UIViewController {
         // call method from a tutorial
         // http://drekka.ghost.io/doing-it-asynchronously-rxswift-vs-promisekit/
         foo()
+            // .then from blog post didn't work
             // .then(execute: bar)
-            .then {fooResult in
+            .then { fooResult in
                 self.bar(fooResult)
             }
             .done { barResult in

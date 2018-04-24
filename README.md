@@ -9,6 +9,9 @@ Experiment with iOS Swift PromiseKit version >= 6.
 Version 6 has breaking changes
 https://github.com/mxcl/PromiseKit
 
+### Doing it asynchronously: RxSwift vs PromiseKit
+http://drekka.ghost.io/doing-it-asynchronously-rxswift-vs-promisekit/
+
 ### Getting Started with PromiseKit
 Written for PromiseKit version 4.
 This tutorial uses OpenWeatherMap, free access allows only low frequency requests ~ 1 request / 10 minutes.

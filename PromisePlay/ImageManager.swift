@@ -30,36 +30,7 @@ class ImageManager {
         PromiseKit.conf.Q.return = .main  // FYI this is the default
     }
 
-    /// method with Promise
-    /// - Parameters:
-    ///   - urlString: url of image to download
-    /// - Returns: a Promise, not Guarantee because method can throw an error
-    static func getImagePromise(urlString: String) throws -> Promise<UIImage> {
-
-        guard let url = URL(string: urlString) else { throw ImageManagerError.urlInvalid }
-
-        let request = URLRequest(url: url)
-
-        // Tested In simulator. Didn't test on device yet.
-        // when app starts it makes 1 request.
-        // If I leave app running, after several minutes get
-        // [BoringSSL] Function boringssl_session_errorlog: line 2881 [boringssl_session_read]
-        // SSL_ERROR_ZERO_RETURN(6): operation failed because the connection was cleanly shut down with a close_notify alert
-        // 2018-04-15 10:52:54.334279-0700 PromisePlay[39551:663001] TIC Read Status [1:0x0]: 1:57
-        // https://stackoverflow.com/questions/47802071/xcode-9-ios-11-boringssl-ssl-error-zero-return
-        return URLSession.shared.dataTask(.promise, with: request)
-
-            // compactMap lets you get error transmission when nil is returned
-            .compactMap { arg -> UIImage in
-                // closure tuple arg has Data .data and URLResponse .response
-                
-                // response don't care
-                let _ = arg.response
-
-                guard let image = UIImage(data: arg.data) else { throw ImageManagerError.dataInvalid }
-                return image
-        }
-    }
+    // MARK: -
 
     /// method with completion, doesn't use Promise
     /// references
@@ -104,6 +75,46 @@ class ImageManager {
 
         // start dataTask
         dataTask.resume()
+    }
+    
+    /// method with Promise
+    /// - Parameters:
+    ///   - urlString: url string of image to download
+    /// - Returns: a Promise, not Guarantee because method can throw an error
+    static func getImagePromise(urlString: String) throws -> Promise<UIImage> {
+
+        guard let url = URL(string: urlString) else { throw ImageManagerError.urlInvalid }
+
+        let request = URLRequest(url: url)
+
+        // Tested In simulator. Didn't test on device yet.
+        // when app starts it makes 1 request.
+        // If I leave app running, after several minutes get
+        // [BoringSSL] Function boringssl_session_errorlog: line 2881 [boringssl_session_read]
+        // SSL_ERROR_ZERO_RETURN(6): operation failed because the connection was cleanly shut down with a close_notify alert
+        // 2018-04-15 10:52:54.334279-0700 PromisePlay[39551:663001] TIC Read Status [1:0x0]: 1:57
+        // https://stackoverflow.com/questions/47802071/xcode-9-ios-11-boringssl-ssl-error-zero-return
+        return URLSession.shared.dataTask(.promise, with: request)
+
+            // compactMap lets you get error transmission when nil is returned
+            .compactMap { arg -> UIImage in
+                // closure tuple arg has Data .data and URLResponse .response
+                
+                // response don't care
+                let _ = arg.response
+
+                guard let image = UIImage(data: arg.data) else { throw ImageManagerError.dataInvalid }
+                return image
+        }
+    }
+
+    // MARK: -
+
+    static func urlRequest(urlString: String) throws -> URLRequest {
+        guard let url = URL(string: urlString) else { throw ImageManagerError.urlInvalid }
+        // URLRequest can throw too
+        let request = URLRequest(url: url)
+        return request
     }
 
 }

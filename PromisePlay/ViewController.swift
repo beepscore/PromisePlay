@@ -20,7 +20,8 @@ class ViewController: UIViewController {
         let urlString = "https://upload.wikimedia.org/wikipedia/commons/6/69/Dog_morphological_variation.png"
 
         // experimentGetImageCompletion(urlString: urlString)
-        experimentGetImagePromise(urlString: urlString)
+        // experimentGetImagePromise(urlString: urlString)
+        experimentGetImagePromise2(urlString: urlString)
 
         experimentFooBar(urlString: urlString)
     }
@@ -57,8 +58,38 @@ class ViewController: UIViewController {
         }
     }
 
+    /// method with Promise
+    /// https://github.com/mxcl/PromiseKit
+    /// - Parameters:
+    ///   - url: url of image to download
+    /// - Returns: a Promise, not Guarantee because method can throw an error
+    func experimentGetImagePromise2(urlString: String) {
+        
+        // https://stackoverflow.com/questions/47802071/xcode-9-ios-11-boringssl-ssl-error-zero-return
+        firstly { URLSession.shared.dataTask(.promise, with: try ImageManager.urlRequest(urlString: urlString))
+            }
+            // compactMap lets you get error transmission when nil is returned
+            .map { arg -> UIImage? in
+                // closure tuple arg has Data .data and URLResponse .response
+
+                // response don't care
+                let _ = arg.response
+
+                guard let image = UIImage(data: arg.data) else { return nil }
+                return image
+            }
+            .done { image in
+                if let image = image {
+                    self.imageView.image = image
+                }
+            }
+            .catch { error in
+                print(error)
+        }
+    }
+
     // MARK: - tutorial
-    
+
     // call method from a tutorial
     // http://drekka.ghost.io/doing-it-asynchronously-rxswift-vs-promisekit/
     func experimentFooBar(urlString: String) {

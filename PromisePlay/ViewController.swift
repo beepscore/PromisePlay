@@ -16,20 +16,51 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        experimentFooBar()
+
         // use https, doesn't require app transport security exception
         let urlString = "https://upload.wikimedia.org/wikipedia/commons/6/69/Dog_morphological_variation.png"
 
         // experimentGetImageCompletion(urlString: urlString)
         // experimentGetImagePromise(urlString: urlString)
         experimentGetImagePromise2(urlString: urlString)
-
-        experimentFooBar(urlString: urlString)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    // MARK: -
+
+    // call method from a tutorial
+    // http://drekka.ghost.io/doing-it-asynchronously-rxswift-vs-promisekit/
+    func experimentFooBar() {
+
+        foo()
+            // .then from blog post didn't work
+            // .then(execute: bar)
+            .then { fooResult in
+                self.bar(fooResult)
+            }
+            .done { barResult in
+                print("Success \(barResult)")
+            }
+            .catch { error in
+                print("Error \(error)")
+        }
+    }
+
+    func foo() -> Promise<String> {
+        // .value initializes a new fulfilled promise
+        return .value("abc")
+    }
+
+    func bar(_ arg: String) -> Promise<String> {
+        return .value("\(arg)def")
+    }
+
+    // MARK: -
 
     // getImage with completion, not using Promise
     func experimentGetImageCompletion(urlString: String) {
@@ -64,17 +95,17 @@ class ViewController: UIViewController {
     ///   - url: url of image to download
     /// - Returns: a Promise, not Guarantee because method can throw an error
     func experimentGetImagePromise2(urlString: String) {
-        
+
         // https://stackoverflow.com/questions/47802071/xcode-9-ios-11-boringssl-ssl-error-zero-return
         firstly { URLSession.shared.dataTask(.promise, with: try ImageManager.urlRequest(urlString: urlString))
             }
             // compactMap lets you get error transmission when nil is returned
             .map { arg -> UIImage? in
                 // closure tuple arg has Data .data and URLResponse .response
-                
+
                 // response don't care
                 let _ = arg.response
-                
+
                 guard let image = UIImage(data: arg.data) else { return nil }
                 return image
             }
@@ -90,31 +121,5 @@ class ViewController: UIViewController {
 
     // MARK: - tutorial
 
-    // call method from a tutorial
-    // http://drekka.ghost.io/doing-it-asynchronously-rxswift-vs-promisekit/
-    func experimentFooBar(urlString: String) {
-
-        foo()
-            // .then from blog post didn't work
-            // .then(execute: bar)
-            .then { fooResult in
-                self.bar(fooResult)
-            }
-            .done { barResult in
-                print("Success \(barResult)")
-            }
-            .catch { error in
-                print("Error \(error)")
-        }
-    }
-
-    func foo() -> Promise<String> {
-        // .value initializes a new fulfilled promise
-        return .value("abc")
-    }
-
-    func bar(_ arg: String) -> Promise<String> {
-        return .value("\(arg)def")
-    }
 }
 

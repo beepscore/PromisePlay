@@ -19,8 +19,9 @@ class ViewController: UIViewController {
         // use https, doesn't require app transport security exception
         let urlString = "https://upload.wikimedia.org/wikipedia/commons/6/69/Dog_morphological_variation.png"
 
-        experimentGetImageCompletion(urlString: urlString)
-        experimentPromise(urlString: urlString)
+        // experimentGetImageCompletion(urlString: urlString)
+        experimentGetImagePromise(urlString: urlString)
+
         experimentFooBar(urlString: urlString)
     }
 
@@ -40,10 +41,9 @@ class ViewController: UIViewController {
         }
     }
 
-    // getImage2 with Promise
-    func experimentPromise(urlString: String) {
+    func experimentGetImagePromise(urlString: String) {
         do {
-            try ImageManager.getImage2(urlString: urlString)
+            try ImageManager.getImagePromise(urlString: urlString)
                 .done { image in
                     self.imageView.image = image
                 }

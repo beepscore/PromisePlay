@@ -34,7 +34,7 @@ class ImageManager {
     /// - Parameters:
     ///   - urlString: url of image to download
     /// - Returns: a Promise, not Guarantee because method can throw an error
-    static func getImage2(urlString: String) throws -> Promise<UIImage> {
+    static func getImagePromise(urlString: String) throws -> Promise<UIImage> {
 
         guard let url = URL(string: urlString) else { throw ImageManagerError.urlInvalid }
 

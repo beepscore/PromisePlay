@@ -49,6 +49,7 @@ class ImageManager {
         // https://stackoverflow.com/questions/47802071/xcode-9-ios-11-boringssl-ssl-error-zero-return
         return URLSession.shared.dataTask(.promise, with: request)
 
+            // compactMap lets you get error transmission when nil is returned
             .compactMap { arg -> UIImage in
                 // closure tuple arg has Data .data and URLResponse .response
                 

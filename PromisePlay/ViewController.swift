@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: -
+    // MARK: - tutorial
 
     // call method from a tutorial
     // http://drekka.ghost.io/doing-it-asynchronously-rxswift-vs-promisekit/
@@ -118,8 +118,6 @@ class ViewController: UIViewController {
                 print(error)
         }
     }
-
-    // MARK: - tutorial
 
 }
 

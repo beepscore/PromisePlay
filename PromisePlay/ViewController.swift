@@ -71,10 +71,10 @@ class ViewController: UIViewController {
             // compactMap lets you get error transmission when nil is returned
             .map { arg -> UIImage? in
                 // closure tuple arg has Data .data and URLResponse .response
-
+                
                 // response don't care
                 let _ = arg.response
-
+                
                 guard let image = UIImage(data: arg.data) else { return nil }
                 return image
             }

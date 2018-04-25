@@ -99,7 +99,8 @@ class ViewController: UIViewController {
         // https://stackoverflow.com/questions/47802071/xcode-9-ios-11-boringssl-ssl-error-zero-return
         firstly { URLSession.shared.dataTask(.promise, with: try ImageManager.urlRequest(urlString: urlString))
             }
-            // compactMap lets you get error transmission when nil is returned
+            // "The provided closure is executed when this promise is resolved"
+            // map is like then but requires the closure to return a non-promise
             .map { arg -> UIImage? in
                 // closure tuple arg has Data .data and URLResponse .response
 

@@ -116,6 +116,13 @@ class ViewController: UIViewController {
             }
             .catch { error in
                 print(error)
+                // e.g.
+                // Error Domain=NSURLErrorDomain Code=-1002 "unsupported URL"
+                // UserInfo={NSUnderlyingError=0x60800004df20
+                // {Error Domain=kCFErrorDomainCFNetwork Code=-1002 "(null)"},
+                // NSErrorFailingURLStringKey=barf,
+                // NSErrorFailingURLKey=barf,
+                // NSLocalizedDescription=unsupported URL}
         }
     }
 

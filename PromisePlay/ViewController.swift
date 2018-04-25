@@ -19,16 +19,29 @@ class ViewController: UIViewController {
         // use https, doesn't require app transport security exception
         let urlString = "https://upload.wikimedia.org/wikipedia/commons/6/69/Dog_morphological_variation.png"
 
-        // getImage with completion, not using Promise
-        // ImageManager.getImage(urlString: urlString) { image, error in
-        //     if error != nil {
-        //         print(String(describing: error))
-        //         return
-        //    }
-        //     self.imageView.image = image
-        // }
+        experimentGetImageCompletion(urlString: urlString)
+        experimentPromise(urlString: urlString)
+        experimentFooBar(urlString: urlString)
+    }
 
-        // getImage2 with Promise
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    // getImage with completion, not using Promise
+    func experimentGetImageCompletion(urlString: String) {
+        ImageManager.getImage(urlString: urlString) { image, error in
+            if error != nil {
+                print(String(describing: error))
+                return
+            }
+            self.imageView.image = image
+        }
+    }
+
+    // getImage2 with Promise
+    func experimentPromise(urlString: String) {
         do {
             try ImageManager.getImage2(urlString: urlString)
                 .done { image in
@@ -42,9 +55,14 @@ class ViewController: UIViewController {
             // catches error ImageManagerError urlInvalid, thrown before dataTask starts
             print(error)
         }
+    }
 
-        // call method from a tutorial
-        // http://drekka.ghost.io/doing-it-asynchronously-rxswift-vs-promisekit/
+    // MARK: - tutorial
+    
+    // call method from a tutorial
+    // http://drekka.ghost.io/doing-it-asynchronously-rxswift-vs-promisekit/
+    func experimentFooBar(urlString: String) {
+
         foo()
             // .then from blog post didn't work
             // .then(execute: bar)
@@ -57,12 +75,6 @@ class ViewController: UIViewController {
             .catch { error in
                 print("Error \(error)")
         }
-
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func foo() -> Promise<String> {
